@@ -1,1 +1,1 @@
-# SnsSampleApp
+# SnsSample
