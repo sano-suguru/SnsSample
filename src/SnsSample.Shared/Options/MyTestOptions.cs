@@ -1,10 +1,9 @@
-﻿using System;
-namespace SnsSample.Shared.Options
+﻿namespace SnsSample.Shared.Options
 {
-	public class MyTestOptions
-	{
-		public static readonly string SectionName = "MyTest";
+    public class MyTestOptions
+    {
+        public static readonly string SectionName = "MyTest";
 
-		public string? MyTestKey { get; set; }
-	}
+        public string? MyTestKey { get; set; }
+    }
 }
