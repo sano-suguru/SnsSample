@@ -8,10 +8,10 @@ entity Account <<アカウント>> {
   Nickname <<ニックネーム>> <color:blue>nvarchar(50)</color> //index//
   Introduction <<自己紹介>> <color:blue>nvarchar(160)</color> <color:red>null</color>
   Location <<場所>> <color:blue>nvarchar(30)</color> <color:red>null</color>
-  WebSite <<ウェブサイト>> <color:red>null</color>
+  WebSite <<ウェブサイト>> <color:blue>varchar(max)</color> <color:red>null</color>
   Birthday <<誕生日>> <color:blue>date</color> <color:red>null</color>
-  Salt <<ソルト>>　<color:blue>varchar(24)</color>
-  Hashed <<ハッシュ化パスワード>>
+  Salt <<ソルト>> <color:blue>varchar(24)</color>
+  Hashed <<ハッシュ化パスワード>> <color:blue>varchar(64)</color>
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
