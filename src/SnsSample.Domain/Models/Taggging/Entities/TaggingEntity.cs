@@ -1,5 +1,4 @@
-﻿using System;
-using SnsSample.Domain.Models.Article.ValueObjects;
+﻿using SnsSample.Domain.Models.Article.ValueObjects;
 using SnsSample.Domain.Models.Tag.ValueObjects;
 using SnsSample.Domain.Models.Taggging.ValueObjects;
 

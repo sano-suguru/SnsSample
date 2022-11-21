@@ -1,5 +1,4 @@
-﻿using System;
-using SnsSample.Domain.Models.Account.ValueObjects;
+﻿using SnsSample.Domain.Models.Account.ValueObjects;
 using SnsSample.Domain.Models.Article.ValueObjects;
 using SnsSample.Domain.Models.Comment.ValueObjects;
 using Text = SnsSample.Domain.Models.Comment.ValueObjects.Text;

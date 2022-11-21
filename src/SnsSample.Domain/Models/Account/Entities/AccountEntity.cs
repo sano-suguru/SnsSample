@@ -1,5 +1,4 @@
-﻿using System;
-using SnsSample.Domain.Models.Account.ValueObjects;
+﻿using SnsSample.Domain.Models.Account.ValueObjects;
 
 namespace SnsSample.Domain.Models.Account.Entities;
 

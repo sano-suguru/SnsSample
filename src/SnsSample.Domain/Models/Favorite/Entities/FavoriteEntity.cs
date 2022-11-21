@@ -1,11 +1,10 @@
-﻿using System;
-using SnsSample.Domain.Models.Account.ValueObjects;
+﻿using SnsSample.Domain.Models.Account.ValueObjects;
 using SnsSample.Domain.Models.Article.ValueObjects;
 using SnsSample.Domain.Models.Favorite.ValueObjects;
 
 namespace SnsSample.Domain.Models.Favorite.Entities
 {
-	public class FavoriteEntity
+    public class FavoriteEntity
 	{
         public FavoriteId FavoriteId { get; init; }
         public AccountId AccountId { get; init; }
