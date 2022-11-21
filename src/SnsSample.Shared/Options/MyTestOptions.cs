@@ -4,6 +4,6 @@
     {
         public static readonly string SectionName = "MyTest";
 
-        public string? MyTestKey { get; set; }
+        public string? MyTestKey { get; init; }
     }
 }
