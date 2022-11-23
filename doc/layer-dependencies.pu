@@ -1,0 +1,41 @@
+@startuml
+skin rose
+
+package プレゼンテーション層 {
+  package SnsSample.Mvc {}
+  package SnsSample.Api {}
+}
+
+package インフラ層 {
+  package SnsSample.Infrastructure {}
+}
+
+package アプリケーション層 {
+  package SnsSample.App {}
+}
+
+package ドメイン層 {
+  package SnsSample.Domain {}
+
+}
+
+package SnsSample.Shared {}
+
+SnsSample.Mvc ..> SnsSample.Infrastructure
+SnsSample.Mvc ..> SnsSample.App
+SnsSample.Mvc ..> SnsSample.Shared
+
+SnsSample.Api ..> SnsSample.Infrastructure
+SnsSample.Api ..> SnsSample.App
+SnsSample.Api ..> SnsSample.Shared
+
+SnsSample.Infrastructure ..> SnsSample.App
+SnsSample.Infrastructure ..> SnsSample.Domain
+SnsSample.Infrastructure ..> SnsSample.Shared
+
+SnsSample.App ..> SnsSample.Domain
+SnsSample.App ..> SnsSample.Domain
+
+SnsSample.Domain ..> SnsSample.Shared
+
+@enduml
