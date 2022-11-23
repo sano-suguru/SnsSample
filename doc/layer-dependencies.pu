@@ -38,4 +38,4 @@ SnsSample.App ..> SnsSample.Domain
 
 SnsSample.Domain ..> SnsSample.Shared
 
-@enduml
+@
