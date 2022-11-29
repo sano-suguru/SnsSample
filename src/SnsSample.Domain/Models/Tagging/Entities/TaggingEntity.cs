@@ -1,8 +1,8 @@
 ﻿using SnsSample.Domain.Models.Article.ValueObjects;
 using SnsSample.Domain.Models.Tag.ValueObjects;
-using SnsSample.Domain.Models.Taggging.ValueObjects;
+using SnsSample.Domain.Models.Tagging.ValueObjects;
 
-namespace SnsSample.Domain.Models.Taggging.Entities;
+namespace SnsSample.Domain.Models.Tagging.Entities;
 
 public class TaggingEntity
 {

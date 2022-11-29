@@ -26,9 +26,9 @@
     <None Remove="Models\Tag\" />
     <None Remove="Models\Tag\Entities\" />
     <None Remove="Models\Tag\ValueObjects\" />
-    <None Remove="Models\Taggging\" />
-    <None Remove="Models\Taggging\Entities\" />
-    <None Remove="Models\Taggging\ValueObjects\" />
+    <None Remove="Models\Tagging\" />
+    <None Remove="Models\Tagging\Entities\" />
+    <None Remove="Models\Tagging\ValueObjects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -48,7 +48,7 @@
     <Folder Include="Models\Tag\Entities\" />
     <Folder Include="Models\Tag\ValueObjects\" />
     <Folder Include="Models\Tagging\" />
-    <Folder Include="Models\Taggging\Entities\" />
-    <Folder Include="Models\Taggging\ValueObjects\" />
+    <Folder Include="Models\Tagging\Entities\" />
+    <Folder Include="Models\Tagging\ValueObjects\" />
   </ItemGroup>
 </Project>
