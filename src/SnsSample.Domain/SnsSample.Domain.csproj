@@ -9,46 +9,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SnsSample.Shared\SnsSample.Shared.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Remove="Models\" />
-    <None Remove="Models\Article\" />
-    <None Remove="Models\Article\Entities\" />
-    <None Remove="Models\Article\ValueObjects\" />
-    <None Remove="Models\Account\" />
-    <None Remove="Models\Account\ValueObjects\" />
-    <None Remove="Models\Account\Entities\" />
-    <None Remove="Models\Favorite\" />
-    <None Remove="Models\Favorite\Entities\" />
-    <None Remove="Models\Favorite\ValueObjects\" />
-    <None Remove="Models\Comment\" />
-    <None Remove="Models\Comment\Entities\" />
-    <None Remove="Models\Comment\ValueObjects\" />
-    <None Remove="Models\Tag\" />
-    <None Remove="Models\Tag\Entities\" />
-    <None Remove="Models\Tag\ValueObjects\" />
-    <None Remove="Models\Tagging\" />
-    <None Remove="Models\Tagging\Entities\" />
-    <None Remove="Models\Tagging\ValueObjects\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Models\Article\" />
-    <Folder Include="Models\Article\Entities\" />
-    <Folder Include="Models\Article\ValueObjects\" />
-    <Folder Include="Models\Account\" />
-    <Folder Include="Models\Account\ValueObjects\" />
-    <Folder Include="Models\Account\Entities\" />
-    <Folder Include="Models\Favorite\" />
-    <Folder Include="Models\Favorite\Entities\" />
-    <Folder Include="Models\Favorite\ValueObjects\" />
-    <Folder Include="Models\Comment\" />
-    <Folder Include="Models\Comment\Entities\" />
-    <Folder Include="Models\Comment\ValueObjects\" />
-    <Folder Include="Models\Tag\" />
-    <Folder Include="Models\Tag\Entities\" />
-    <Folder Include="Models\Tag\ValueObjects\" />
-    <Folder Include="Models\Tagging\" />
-    <Folder Include="Models\Tagging\Entities\" />
-    <Folder Include="Models\Tagging\ValueObjects\" />
-  </ItemGroup>
 </Project>
