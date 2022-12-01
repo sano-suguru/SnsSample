@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace SnsSample.Shared.DependencyInjection;
 
-public abstract class ServiceAttributeBase
+public abstract class ServiceAttributeBase : Attribute
 {
     public Type? ImplType { get; }
     public Type? ServiceType { get; }
