@@ -11,6 +11,7 @@ public sealed class SingletonServiceAttribute : ServiceAttributeBase
         , lifeTime: ServiceLifetime.Singleton
         , multipleImplementation: true)
     {
+
     }
 }
 
