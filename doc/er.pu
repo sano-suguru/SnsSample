@@ -21,6 +21,8 @@ entity Friendship <<フレンドシップ>> {
   --
   -Following <<フォローしているアカウントID>> <color:blue>bigint</color> //index//
   -Followed <<フォローされているアカウントID>> <color:blue>bigint</color> //index//
+  CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
+  UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
 
 entity Article <<記事>>{
@@ -55,7 +57,7 @@ entity Favorite <<お気に入り>> {
 entity Tag <<タグ>> {
   +TagId <<タグID>> <color:blue>bigint</color>
   --
-  Name <<タグ名>> <color:blue>nvarchar(30)</color>
+  Name <<タグ名>> <color:blue>nvarchar(30)</color> <color:green>unique</color> //index//
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
