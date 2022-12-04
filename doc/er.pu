@@ -19,8 +19,8 @@ entity Account <<アカウント>> {
 entity Friendship <<フレンドシップ>> {
   +FriendshipId <<フレンドシップID>> <color:blue>bigint</color>
   --
-  -Following <<フォローしているアカウントID>> <color:blue>bigint</color> //index//
-  -Followed <<フォローされているアカウントID>> <color:blue>bigint</color> //index//
+  -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
+  -FollowedBy <<フォローされているアカウントID>> <color:blue>bigint</color> //index//
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }

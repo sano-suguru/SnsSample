@@ -27,21 +27,21 @@ CREATE INDEX "IX_Account_CreatedAt" ON "Account" (
 
 CREATE TABLE "Friendship" (
 	"FriendshipId"	INTEGER NOT NULL UNIQUE,
-	"Following"	INTEGER NOT NULL,
-	"Followed"	INTEGER NOT NULL,
+	"AccountId"	INTEGER NOT NULL,
+	"FolllowedBy"	INTEGER NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	FOREIGN KEY("Followed") REFERENCES "Account"("AccountId"),
-	FOREIGN KEY("Following") REFERENCES "Account"("AccountId"),
+	FOREIGN KEY("FolllowedBy") REFERENCES "Account"("AccountId"),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
 	PRIMARY KEY("FriendshipId" AUTOINCREMENT)
 )
 
-CREATE INDEX "IX_Friendship_Following" ON "Friendship" (
-	"Following"
+CREATE INDEX "IX_Friendship_AccountId" ON "Friendship" (
+	"AccountId"
 )
 
-CREATE INDEX "IX_Friendship_Followed" ON "Friendship" (
-	"Followed"
+CREATE INDEX "IX_Friendship_FollowedBy" ON "Friendship" (
+	"FolllowedBy"
 )
 
 CREATE INDEX "IX_Friendship_CreatedAt" ON "Friendship" (
