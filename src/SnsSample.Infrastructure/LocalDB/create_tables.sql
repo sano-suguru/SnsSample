@@ -1,11 +1,6 @@
 CREATE TABLE "Account" (
 	"AccountId"	INTEGER NOT NULL UNIQUE,
 	"Code"	TEXT NOT NULL UNIQUE,
-	"NIckname"	TEXT NOT NULL,
-	"Introduction"	TEXT,
-	"Location"	TEXT,
-	"WebSite"	TEXT,
-	"Birthday"	TEXT,
 	"Salt"	TEXT NOT NULL,
 	"Hashed"	TEXT NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
@@ -17,11 +12,33 @@ CREATE INDEX "IX_Account_Code" ON "Account" (
 	"Code"
 )
 
-CREATE INDEX "IX_Account_Nickname" ON "Account" (
-	"NIckname"
+CREATE INDEX "IX_Account_CreatedAt" ON "Account" (
+	"CreatedAt"
 )
 
-CREATE INDEX "IX_Account_CreatedAt" ON "Account" (
+CREATE TABLE "Profile" (
+	"ProfileId"	INTEGER NOT NULL UNIQUE,
+	"AccountId"	INTEGER NOT NULL UNIQUE,
+	"Nickname"	TEXT NOT NULL,
+	"Introduction"	TEXT,
+	"Location"	TEXT,
+	"WebSite"	TEXT,
+	"Birthday"	TEXT,
+	"CreatedAt"	TEXT NOT NULL,
+	"UpdatedAt"	TEXT,
+	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
+	PRIMARY KEY("ProfileId" AUTOINCREMENT)
+)
+
+CREATE INDEX "IX_Profile_AccountId" ON "Profile" (
+	"AccountId"
+)
+
+CREATE INDEX "IX_Profile_Nickname" ON "Profile" (
+	"Nickname"
+)
+
+CREATE INDEX "IX_Profile_CreatedAt" ON "Profile" (
 	"CreatedAt"
 )
 
