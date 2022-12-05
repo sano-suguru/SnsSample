@@ -7,16 +7,19 @@ namespace SnsSample.Domain.Models.Comment.Entities;
 
 public class Comment
 {
-    public CommentId CommentId { get; init; }
-    public AccountId AccountId { get; init; }
-    public ArticleId ArticleId { get; init; }
-    public Text Text { get; init; }
+    public CommentId CommentId { get; private set; }
+    public AccountId AccountId { get; private set; }
+    public ArticleId ArticleId { get; private set; }
+    public Text Text { get; private set; }
 
-    public Comment(CommentId commentId, AccountId accountId, ArticleId articleId, Text text)
+    public Comment(CommentId commentId
+        , AccountId accountId
+        , ArticleId articleId
+        , Text text)
     {
-        CommentId = commentId;
-        AccountId = accountId;
-        ArticleId = articleId;
-        Text = text;
+        this.CommentId = commentId;
+        this.AccountId = accountId;
+        this.ArticleId = articleId;
+        this.Text = text;
     }
 }

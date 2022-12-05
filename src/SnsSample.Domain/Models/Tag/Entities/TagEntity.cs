@@ -4,12 +4,12 @@ namespace SnsSample.Domain.Models.Tag.Entities;
 
 public class TagEntity
 {
-    public TagId TagId { get; init; }
-    public Name Name { get; init; }
+    public TagId TagId { get; private set; }
+    public Name Name { get; private set; }
 
     public TagEntity(TagId tagId, Name name)
     {
-        TagId = tagId;
-        Name = name;
+        this.TagId = tagId;
+        this.Name = name;
     }
 }
