@@ -8,7 +8,7 @@ public class TaggingEntity
 {
     public TaggingId TaggingId { get; private set; }
     public ArticleId ArticleId { get; private set; }
-    public TagId TagId { get; init; }
+    public TagId TagId { get; private set; }
 
     public TaggingEntity(
         TaggingId taggingId
