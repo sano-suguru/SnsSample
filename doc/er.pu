@@ -6,6 +6,8 @@ entity Account <<アカウント>> {
   --
   Code <<コード>> <color:blue>varchar(15)</color> <color:green>unique</color> //index//
   Nickname <<ニックネーム>> <color:blue>nvarchar(50)</color> //index//
+  Salt <<ソルト>> <color:blue>varchar(24)</color>
+  Hashed <<ハッシュ化パスワード>> <color:blue>varchar(64)</color>
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
@@ -18,8 +20,6 @@ entity Profile <<プロファイル>> {
   Location <<場所>> <color:blue>nvarchar(30)</color> <color:red>null</color>
   WebSite <<ウェブサイト>> <color:blue>varchar(max)</color> <color:red>null</color>
   Birthday <<誕生日>> <color:blue>date</color> <color:red>null</color>
-  Salt <<ソルト>> <color:blue>varchar(24)</color>
-  Hashed <<ハッシュ化パスワード>> <color:blue>varchar(64)</color>
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
