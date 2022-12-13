@@ -9,7 +9,7 @@ public record FavoriteId : ValueObject<long>
     {
         if (value < 0)
         {
-            throw new NegativeFavoriteIdException($"{nameof(FavoriteId)} を負の値にすることはできません。実際の値：{value}");
+            throw new NegativeFavoriteIdException($"{nameof(FavoriteId)} を負の値にすることはできません。実際の値：'{value}'");
         }
     }
 }
