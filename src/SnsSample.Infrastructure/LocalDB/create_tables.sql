@@ -20,14 +20,14 @@ CREATE TABLE "Profile" (
 	"ProfileId"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL UNIQUE,
 	"Nickname"	TEXT NOT NULL,
-	"Introduction"	TEXT,
+	"Biography"	TEXT,
 	"Location"	TEXT,
 	"WebSite"	TEXT,
 	"Birthday"	TEXT,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
-	PRIMARY KEY("ProfileId" AUTOINCREMENT)
+	PRIMARY KEY("ProfileId" AUTOINCREMENT),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId")
 )
 
 CREATE INDEX "IX_Profile_AccountId" ON "Profile" (

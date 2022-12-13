@@ -6,7 +6,15 @@ entity Account <<アカウント>> {
   --
   Code <<コード>> <color:blue>varchar(15)</color> <color:green>unique</color> //index//
   Nickname <<ニックネーム>> <color:blue>nvarchar(50)</color> //index//
-  Introduction <<自己紹介>> <color:blue>nvarchar(160)</color> <color:red>null</color>
+  CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
+  UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
+}
+
+entity Profile <<プロファイル>> {
+  +ProfileId <<プロファイルID>> <color:blue>bigint</color>
+  --
+  -AccountId <<アカウントID>> <color:blue>bigint</color> <color:green>unique</color> //index//
+  Biography <<自己紹介>> <color:blue>nvarchar(160)</color> <color:red>null</color>
   Location <<場所>> <color:blue>nvarchar(30)</color> <color:red>null</color>
   WebSite <<ウェブサイト>> <color:blue>varchar(max)</color> <color:red>null</color>
   Birthday <<誕生日>> <color:blue>date</color> <color:red>null</color>
@@ -19,8 +27,8 @@ entity Account <<アカウント>> {
 entity Friendship <<フレンドシップ>> {
   +FriendshipId <<フレンドシップID>> <color:blue>bigint</color>
   --
-  -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
-  -FollowedBy <<フォローされているアカウントID>> <color:blue>bigint</color> //index//
+  -FolloweeId <<フォローされるアカウントID>> <color:blue>bigint</color> //index//
+  -FollowerId <<フォローするアカウントID>> <color:blue>bigint</color> //index//
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
@@ -71,6 +79,7 @@ entity Tagging <<タグ付け>> {
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
 
+Profile |o--|| Account
 Friendship }o--|| Account
 Account ||-o{ Article
 Article ||-o{ Comment
