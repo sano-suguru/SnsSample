@@ -40,14 +40,14 @@ public class ProfilesApplicationService
     {
         if (await this.accontProfileQueryService.SelectByCode(followeeAccountCode) is not { } accountProfile)
         {
-            throw new Exception("コードの対象のアカウントがない");
+            throw new FolloweeAccountNotFoundException();
         }
 
         AccountId followeeAccountId = accountProfile.AccountId;
 
         if (this.friendshipQueryService.Select(followeeAccountId, followerAccountId) is not null)
         {
-            throw new Exception("すでにフォローしている");
+            throw new FolloweeAlreadyFollowedException();
         }
 
         Friendship friendship = new(accountProfile.AccountId, followerAccountId);
@@ -59,14 +59,14 @@ public class ProfilesApplicationService
     {
         if (await this.accontProfileQueryService.SelectByCode(followeeAccountCode) is not  AccountProfileReadModel accountProfile)
         {
-            throw new Exception("コードの対象のアカウントがない");
+            throw new FolloweeAccountNotFoundException();
         }
 
         AccountId followeeAccountId = accountProfile.AccountId;
 
         if (this.friendshipQueryService.Select(followeeAccountId, followerAccountId) is not FriendshipReadModel friendShip)
         {
-            throw new Exception("ふぉろーしていない");
+            throw new NotFollowingFolloweeException();
         }
 
         await this.friendshipRepository.DeleteByIdAsync(friendShip.FriendshipId);
