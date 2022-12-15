@@ -1,6 +1,6 @@
 ﻿namespace SnsSample.Domain.Abstractions;
 
-public abstract record ValueObject<TValue>(TValue Value) where TValue : notnull
+public record ValueObject<TValue>(TValue Value) where TValue : notnull
 {
     public override string ToString()
     {
