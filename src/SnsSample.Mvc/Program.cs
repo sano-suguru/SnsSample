@@ -1,4 +1,4 @@
-using SnsSample.Infrastructure.LocalDB;
+using SnsSample.Infrastructure.Sqlite;
 
 var builder = WebApplication.CreateBuilder(args);
 

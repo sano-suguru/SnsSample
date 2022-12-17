@@ -2,7 +2,7 @@
 using Dapper;
 using SnsSample.Domain.Abstractions;
 
-namespace SnsSample.Infrastructure.LocalDB;
+namespace SnsSample.Infrastructure.Sqlite;
 
 public class ValueObjectTypeHandler<T> : SqlMapper.TypeHandler<ValueObject<T>> where T : notnull
 {

@@ -1,9 +1,14 @@
-﻿using SnsSample.Domain.Interfaces;
+﻿using SnsSample.Domain.Abstractions;
+using SnsSample.Domain.Interfaces;
 using SqlKata.Execution;
 
-namespace SnsSample.Infrastructure.LocalDB;
+namespace SnsSample.Infrastructure.Sqlite;
 
-public class SqliteRepository<TEntity> : IRepository<TEntity> where TEntity : class
+public class SqliteRepository<TEntity, TKey, TKeyValue>
+    : IRepository<TEntity, TKey, TKeyValue>
+        where TEntity : EntityBase<TKey, TKeyValue>
+            where TKey : ValueObject<TKeyValue>
+                where TKeyValue : notnull
 {
     private readonly QueryFactory db;
 
@@ -12,25 +17,31 @@ public class SqliteRepository<TEntity> : IRepository<TEntity> where TEntity : cl
         this.db = db;
     }
 
-    public async ValueTask<TEntity> InsertAsync(TEntity entity)
+    public async ValueTask InsertAsync(TEntity entity)
     {
-        long id = await this.db.Query(typeof(TEntity).Name).InsertAsync(entity);
+        TKeyValue id = await this.db.Query(typeof(TEntity).Name).InsertGetIdAsync<TKeyValue>(entity);
 
-        return entity;
+        entity.Id = (TKey)new ValueObject<TKeyValue>(id);
     }
 
-    public ValueTask<TEntity?> SelectByIdAsnyc<TId>(TId id) where TId : notnull
+    public async ValueTask<TEntity?> SelectByIdAsnyc(TKey id)
     {
-        throw new NotImplementedException();
+        return await this.db.Query(typeof(TEntity).Name)
+            .Where(nameof(EntityBase<TKey, TKeyValue>.Id), id.Value)
+            .FirstAsync<TEntity?>();
     }
 
-    public ValueTask<TEntity> UpdateAsync<TId>(TEntity entity, TId id) where TId : notnull
+    public async ValueTask UpdateByIdAsync(TEntity entity, TKey id)
     {
-        throw new NotImplementedException();
+        await this.db.Query(typeof(TEntity).Name)
+           .Where(nameof(EntityBase<TKey, TKeyValue>.Id), id.Value)
+           .UpdateAsync(entity);
     }
 
-    public ValueTask DeleteByIdAsync<TId>(TId id)
+    public async ValueTask DeleteByIdAsync(TKey id)
     {
-        throw new NotImplementedException();
+        await this.db.Query(typeof(TEntity).Name)
+           .Where(nameof(EntityBase<TKey, TKeyValue>.Id), id.Value)
+           .DeleteAsync();
     }
 }

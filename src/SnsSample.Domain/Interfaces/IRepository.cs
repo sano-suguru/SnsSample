@@ -1,12 +1,17 @@
-﻿namespace SnsSample.Domain.Interfaces;
+﻿using SnsSample.Domain.Abstractions;
 
-public interface IRepository<TEntity> where TEntity : class
+namespace SnsSample.Domain.Interfaces;
+
+public interface IRepository<TEntity, TKey, TKeyValue>
+    where TEntity : EntityBase<TKey, TKeyValue>
+        where TKey : ValueObject<TKeyValue>
+            where TKeyValue : notnull
 {
-    ValueTask<TEntity?> SelectByIdAsnyc<TId>(TId id) where TId : notnull;
+    ValueTask<TEntity?> SelectByIdAsnyc(TKey id);
 
-    ValueTask<TEntity> InsertAsync(TEntity entity);
+    ValueTask InsertAsync(TEntity entity);
 
-    ValueTask<TEntity> UpdateAsync<TId>(TEntity entity, TId id) where TId : notnull;
+    ValueTask UpdateByIdAsync(TEntity entity, TKey id);
 
-    ValueTask DeleteByIdAsync<TId>(TId id);
+    ValueTask DeleteByIdAsync(TKey id);
 }

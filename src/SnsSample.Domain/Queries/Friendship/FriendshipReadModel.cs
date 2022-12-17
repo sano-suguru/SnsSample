@@ -4,5 +4,5 @@ namespace SnsSample.Domain.Queries.Friendship;
 
 public class FriendshipReadModel
 {
-    public FriendshipId FriendshipId { get; init; }
+    public FriendshipId? FriendshipId { get; init; }
 }

@@ -1,6 +1,7 @@
 ﻿using SnsSample.Domain.Interfaces;
 using SnsSample.Domain.Models.Accounts.ValueObjects;
 using SnsSample.Domain.Models.Friendships.Entities;
+using SnsSample.Domain.Models.Friendships.ValueObjects;
 using SnsSample.Domain.Queries.AccountProfile;
 using SnsSample.Domain.Queries.Friendship;
 using SnsSample.Shared.DependencyInjection;
@@ -12,12 +13,12 @@ public class ProfilesApplicationService
 {
     private readonly IAccoutProfileQueryService accontProfileQueryService;
     private readonly IFriendshipQueryService friendshipQueryService;
-    private readonly IRepository<Friendship> friendshipRepository;
+    private readonly IRepository<Friendship, FriendshipId, long> friendshipRepository;
 
     public ProfilesApplicationService(
         IAccoutProfileQueryService accontProfileQueryService
         , IFriendshipQueryService friendshipQueryService
-        , IRepository<Friendship> friendshipRepository
+        , IRepository<Friendship, FriendshipId, long> friendshipRepository
     )
     {
         this.accontProfileQueryService = accontProfileQueryService;
@@ -69,6 +70,6 @@ public class ProfilesApplicationService
             throw new NotFollowingFolloweeException();
         }
 
-        await this.friendshipRepository.DeleteByIdAsync(friendShip.FriendshipId);
+        await this.friendshipRepository.DeleteByIdAsync(friendShip.FriendshipId!);
     }
 }
