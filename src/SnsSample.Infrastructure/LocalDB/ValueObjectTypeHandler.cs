@@ -18,12 +18,13 @@ public class ValueObjectTypeHandler<T> : SqlMapper.TypeHandler<ValueObject<T>> w
             int => DbType.Int32,
             long => DbType.Int64,
             double => DbType.Double,
+            decimal => DbType.Decimal,
             char => DbType.String,
-            DateTime => DbType.DateTime,
             string => DbType.String,
+            DateTime => DbType.DateTime,
             bool => DbType.Boolean,
             _ => throw new ArgumentOutOfRangeException(nameof(value), $"DBの型にマッピングできません。型：{typeof(T)}")
-        }; ;
+        };
         parameter.Value = value.Value;
     }
 }
