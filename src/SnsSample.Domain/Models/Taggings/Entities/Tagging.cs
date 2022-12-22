@@ -6,16 +6,12 @@ namespace SnsSample.Domain.Models.Taggings.Entities;
 
 public class TaggingEntity
 {
-    public TaggingId TaggingId { get; private set; }
+    public TaggingId? TaggingId { get; private set; }
     public ArticleId ArticleId { get; private set; }
     public TagId TagId { get; private set; }
 
-    public TaggingEntity(
-        TaggingId taggingId
-        , ArticleId articleId
-        , TagId tagId )
+    public TaggingEntity(ArticleId articleId, TagId tagId)
     {
-        this.TaggingId = taggingId;
         this.ArticleId = articleId;
         this.TagId = tagId;
     }
