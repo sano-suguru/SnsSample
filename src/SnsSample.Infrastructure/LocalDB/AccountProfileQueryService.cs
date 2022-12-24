@@ -6,29 +6,27 @@ using SnsSample.Domain.Queries.AccountProfile;
 using SnsSample.Shared.DependencyInjection;
 using SqlKata.Execution;
 
-namespace SnsSample.Infrastructure.LocalDB
+namespace SnsSample.Infrastructure.LocalDB;
+
+[TransientService]
+public class AccountProfileQueryService : IAccountProfileQueryService
 {
-    [TransientService]
-    public class AccountProfileQueryService : IAccountProfileQueryService
+    private readonly QueryFactory db;
+
+    public AccountProfileQueryService(QueryFactory db)
     {
-        private readonly QueryFactory db;
+        this.db = db;
+    }
 
-        public AccountProfileQueryService(QueryFactory db)
-        {
-            this.db = db;
-        }
+    public async ValueTask<AccountProfileReadModel?> SelectByCode(Code code)
+    {
+        var model = await this.db.Query(nameof(Account))
+            .Join(nameof(Profile)
+                , $"{nameof(Account)}.{nameof(Account.Id)}"
+                , $"{nameof(Profile)}.{nameof(Profile.AccountId)}")
+            .Where(nameof(Account.Code), code)
+            .FirstAsync<AccountProfileReadModel>();
 
-        public async ValueTask<AccountProfileReadModel?> SelectByCode(Code code)
-        {
-            var model = await this.db.Query(nameof(Account))
-                .Join(nameof(Profile)
-                    , $"{nameof(Account)}.{nameof(Account.Id)}"
-                    , $"{nameof(Profile)}.{nameof(Profile.AccountId)}")
-                .Where(nameof(Account.Code), code)
-                .FirstAsync<AccountProfileReadModel>();
-
-            return model;
-        }
+        return model;
     }
 }
-
