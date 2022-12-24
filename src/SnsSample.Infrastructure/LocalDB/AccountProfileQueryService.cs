@@ -8,7 +8,7 @@ using SqlKata.Execution;
 
 namespace SnsSample.Infrastructure.LocalDB;
 
-[TransientService]
+[ScopedService]
 public class AccountProfileQueryService : IAccountProfileQueryService
 {
     private readonly QueryFactory db;

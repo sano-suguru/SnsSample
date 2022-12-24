@@ -4,7 +4,7 @@ using SnsSample.Domain.Models.Accounts.ValueObjects;
 
 namespace SnsSample.Mvc.Controllers;
 
-[Route("profiles")]
+[Route("mvc/profiles")]
 public class ProfilesController : Controller
 {
     private readonly ProfilesApplicationService profileApplicationService;
