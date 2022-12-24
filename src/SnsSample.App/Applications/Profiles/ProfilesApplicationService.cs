@@ -11,12 +11,12 @@ namespace SnsSample.App.Applications.Profiles;
 [TransientService]
 public class ProfilesApplicationService
 {
-    private readonly IAccoutProfileQueryService accontProfileQueryService;
+    private readonly IAccountProfileQueryService accontProfileQueryService;
     private readonly IFriendshipQueryService friendshipQueryService;
     private readonly IRepository<Friendship, FriendshipId, long> friendshipRepository;
 
     public ProfilesApplicationService(
-        IAccoutProfileQueryService accontProfileQueryService
+        IAccountProfileQueryService accontProfileQueryService
         , IFriendshipQueryService friendshipQueryService
         , IRepository<Friendship, FriendshipId, long> friendshipRepository
     )

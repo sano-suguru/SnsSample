@@ -2,7 +2,7 @@
 
 namespace SnsSample.Domain.Queries.AccountProfile;
 
-public interface IAccoutProfileQueryService
+public interface IAccountProfileQueryService
 {
-    ValueTask<AccountProfileReadModel> SelectByCode(Code code);
+    ValueTask<AccountProfileReadModel?> SelectByCode(Code code);
 }
