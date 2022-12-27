@@ -2,31 +2,39 @@
 skin rose
 
 entity Account <<アカウント>> {
-  +AccountId <<アカウントID>> <color:blue>bigint</color>
+  +Id <<アカウントID>> <color:blue>bigint</color>
   --
   Code <<コード>> <color:blue>varchar(15)</color> <color:green>unique</color> //index//
   Nickname <<ニックネーム>> <color:blue>nvarchar(50)</color> //index//
-  Introduction <<自己紹介>> <color:blue>nvarchar(160)</color> <color:red>null</color>
-  Location <<場所>> <color:blue>nvarchar(30)</color> <color:red>null</color>
-  WebSite <<ウェブサイト>> <color:blue>varchar(max)</color> <color:red>null</color>
-  Birthday <<誕生日>> <color:blue>date</color> <color:red>null</color>
   Salt <<ソルト>> <color:blue>varchar(24)</color>
   Hashed <<ハッシュ化パスワード>> <color:blue>varchar(64)</color>
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
 
-entity Friendship <<フレンドシップ>> {
-  +FriendshipId <<フレンドシップID>> <color:blue>bigint</color>
+entity Profile <<プロファイル>> {
+  +Id <<プロファイルID>> <color:blue>bigint</color>
   --
-  -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
-  -FollowedBy <<フォローされているアカウントID>> <color:blue>bigint</color> //index//
+  -AccountId <<アカウントID>> <color:blue>bigint</color> <color:green>unique</color> //index//
+  Biography <<自己紹介>> <color:blue>nvarchar(160)</color> <color:red>null</color>
+  Location <<場所>> <color:blue>nvarchar(30)</color> <color:red>null</color>
+  WebSite <<ウェブサイト>> <color:blue>varchar(max)</color> <color:red>null</color>
+  Birthday <<誕生日>> <color:blue>date</color> <color:red>null</color>
+  CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
+  UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
+}
+
+entity Friendship <<フレンドシップ>> {
+  +Id <<フレンドシップID>> <color:blue>bigint</color>
+  --
+  -FolloweeId <<フォローされるアカウントID>> <color:blue>bigint</color> //index//
+  -FollowerId <<フォローするアカウントID>> <color:blue>bigint</color> //index//
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
 
 entity Article <<記事>>{
-  +ArticleId <<記事ID>> <color:blue>bigint</color>
+  +Id <<記事ID>> <color:blue>bigint</color>
   --
   -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
   Slug <<スラッグ>>　<color:blue>varchar(26)</color> <color:green>unique</color> //index//
@@ -36,7 +44,7 @@ entity Article <<記事>>{
 }
 
 entity Comment <<コメント>> {
-  +CommentId <<コメントID>> <color:blue>bigint</color>
+  +Id <<コメントID>> <color:blue>bigint</color>
   --
   -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
   -ArticleId <<記事ID>> <color:blue>bigint</color> //index//
@@ -46,7 +54,7 @@ entity Comment <<コメント>> {
 }
 
 entity Favorite <<お気に入り>> {
-  +FavoriteId <<お気に入りID>> <color:blue>bigint</color>
+  +Id <<お気に入りID>> <color:blue>bigint</color>
   --
   -AccountId <<アカウントID>> <color:blue>bigint</color> //index//
   -ArticleId <<記事ID>> <color:blue>bigint</color> //index//
@@ -55,7 +63,7 @@ entity Favorite <<お気に入り>> {
 }
 
 entity Tag <<タグ>> {
-  +TagId <<タグID>> <color:blue>bigint</color>
+  +Id <<タグID>> <color:blue>bigint</color>
   --
   Name <<タグ名>> <color:blue>nvarchar(30)</color> <color:green>unique</color> //index//
   CreatedAt <<作成日時>> <color:blue>datetime</color> //index//
@@ -63,7 +71,7 @@ entity Tag <<タグ>> {
 }
 
 entity Tagging <<タグ付け>> {
-  +TaggingId <<タグ付けID>> <color:blue>bigint</color>
+  +Id <<タグ付けID>> <color:blue>bigint</color>
   --
   -ArticleId <<記事ID>> <color:blue>bigint</color> //index//
   -TagId <<タグID>> <color:blue>bigint</color> //index//
@@ -71,6 +79,7 @@ entity Tagging <<タグ付け>> {
   UpdatedAt <<更新日時>> <color:blue>datetime</color> <color:red>null</color>
 }
 
+Profile |o--|| Account
 Friendship }o--|| Account
 Account ||-o{ Article
 Article ||-o{ Comment

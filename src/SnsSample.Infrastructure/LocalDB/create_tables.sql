@@ -1,11 +1,11 @@
 CREATE TABLE "Account" (
-	"AccountId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"Code"	TEXT NOT NULL UNIQUE,
 	"Salt"	TEXT NOT NULL,
 	"Hashed"	TEXT NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	PRIMARY KEY("AccountId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT)
 )
 
 CREATE INDEX "IX_Account_Code" ON "Account" (
@@ -17,17 +17,17 @@ CREATE INDEX "IX_Account_CreatedAt" ON "Account" (
 )
 
 CREATE TABLE "Profile" (
-	"ProfileId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL UNIQUE,
 	"Nickname"	TEXT NOT NULL,
-	"Introduction"	TEXT,
+	"Biography"	TEXT,
 	"Location"	TEXT,
 	"WebSite"	TEXT,
 	"Birthday"	TEXT,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
-	PRIMARY KEY("ProfileId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("Id")
 )
 
 CREATE INDEX "IX_Profile_AccountId" ON "Profile" (
@@ -43,14 +43,14 @@ CREATE INDEX "IX_Profile_CreatedAt" ON "Profile" (
 )
 
 CREATE TABLE "Friendship" (
-	"FriendshipId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL,
 	"FolllowedBy"	INTEGER NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	FOREIGN KEY("FolllowedBy") REFERENCES "Account"("AccountId"),
-	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
-	PRIMARY KEY("FriendshipId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("FolllowedBy") REFERENCES "Account"("Id"),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("Id")
 )
 
 CREATE INDEX "IX_Friendship_AccountId" ON "Friendship" (
@@ -66,13 +66,14 @@ CREATE INDEX "IX_Friendship_CreatedAt" ON "Friendship" (
 )
 
 CREATE TABLE "Article" (
-	"ArticleId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL,
 	"Slug"	TeXT NOT NULL UNIQUE,
 	"Text"	TEXT NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	PRIMARY KEY("ArticleId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("Id")
 )
 
 CREATE INDEX "IX_Article_AccountId" ON "Article" (
@@ -88,14 +89,14 @@ CREATE INDEX "IX_Article_CreatedAt" ON "Article" (
 )
 
 CREATE TABLE "Favorite" (
-	"FavoriteId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL,
 	"ArticleId"	INTEGER NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdateAt"	INTEGER,
-	FOREIGN KEY("ArticleId") REFERENCES "Article"("ArticleId"),
-	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
-	PRIMARY KEY("FavoriteId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("Id"),
+	FOREIGN KEY("ArticleId") REFERENCES "Article"("Id")
 )
 
 CREATE INDEX "IX_Favorite_AccountId" ON "Favorite" (
@@ -111,15 +112,15 @@ CREATE INDEX "IX_Favorite_CreatedAt" ON "Favorite" (
 )
 
 CREATE TABLE "Comment" (
-	"CommentId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"AccountId"	INTEGER NOT NULL,
 	"ArticleId"	INTEGER NOT NULL,
 	"Text"	TEXT NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	FOREIGN KEY("ArticleId") REFERENCES "Article"("ArticleId"),
-	FOREIGN KEY("AccountId") REFERENCES "Account"("AccountId"),
-	PRIMARY KEY("CommentId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("ArticleId") REFERENCES "Article"("Id"),
+	FOREIGN KEY("AccountId") REFERENCES "Account"("Id")
 )
 
 CREATE INDEX "IX_Comment_AccountId" ON "Comment" (
@@ -135,11 +136,11 @@ CREATE INDEX "IX_Comment_CreatedAt" ON "Comment" (
 )
 
 CREATE TABLE "Tag" (
-	"TagId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"Name"	TEXT NOT NULL UNIQUE,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdatedAt"	TEXT,
-	PRIMARY KEY("TagId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT)
 )
 
 CREATE INDEX "IX_Tag_Name" ON "Tag" (
@@ -151,14 +152,14 @@ CREATE INDEX "IX_Tag_CreatedAt" ON "Tag" (
 )
 
 CREATE TABLE "Tagging" (
-	"TaggingId"	INTEGER NOT NULL UNIQUE,
+	"Id"	INTEGER NOT NULL UNIQUE,
 	"ArticleId"	INTEGER NOT NULL,
 	"TagId"	INTEGER NOT NULL,
 	"CreatedAt"	TEXT NOT NULL,
 	"UpdateAt"	TEXT,
-	FOREIGN KEY("TagId") REFERENCES "Tag"("TagId"),
-	FOREIGN KEY("ArticleId") REFERENCES "Article"("ArticleId"),
-	PRIMARY KEY("TaggingId" AUTOINCREMENT)
+	PRIMARY KEY("Id" AUTOINCREMENT),
+	FOREIGN KEY("TagId") REFERENCES "Tag"("Id"),
+	FOREIGN KEY("ArticleId") REFERENCES "Article"("Id")
 )
 
 CREATE INDEX "IX_Tagging_ArticleId" ON "Tagging" (

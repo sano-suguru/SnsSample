@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SnsSample.Shared.Options;
 
 namespace SnsSample.Shared;
@@ -9,7 +9,7 @@ public static class WebApplicationBuilderExtentions
 {
     public static void AddSharedSettings(this WebApplicationBuilder builder)
     {
-        IWebHostEnvironment env = builder.Environment;
+        IHostEnvironment env = builder.Environment;
         ConfigurationManager config = builder.Configuration;
         IServiceCollection services = builder.Services;
 

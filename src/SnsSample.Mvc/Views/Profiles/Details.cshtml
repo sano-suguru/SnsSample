@@ -1,0 +1,24 @@
+﻿@using SnsSample.App.Applications.Profiles
+@model ProfileDto
+
+@{
+    ViewData["Title"] = "プロフィール詳細";
+}
+
+<div>
+    <h1>プロフィール詳細</h1>
+    <p>ニックネーム: <span>@Model.Nickname</span></p>
+    <p>コード: <span>@@(@Model.Code)</span></p>
+    @if (Model.Biography is not null)
+    {
+        <p>自己紹介: <span>@Model.Biography</span></p>
+    }
+    @if (Model.WebSite is not null)
+    {
+        <p>ウェブサイト: <a href="@Model.WebSite">@Model.WebSite</a></p>
+    }
+    @if (Model.Birthday is not null)
+    {
+        <p>誕生日：<span>@(Model.Birthday?.ToString("yyyy年MM月dd日"))</span></p>
+    }
+</div>

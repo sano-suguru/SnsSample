@@ -1,6 +1,12 @@
+using System.Reflection;
+using SnsSample.Infrastructure.Sqlite;
+using SnsSample.Shared.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the containexr.
+builder.Services.AddServicesInAssembly(Assembly.GetAssembly(typeof(Program))!);
+builder.Services.AddSqliteRepositories(builder.Environment);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -22,6 +28,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "mvc/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
