@@ -6,7 +6,7 @@ using SnsSample.Domain.Queries.AccountProfile;
 using SnsSample.Shared.DependencyInjection;
 using SqlKata.Execution;
 
-namespace SnsSample.Infrastructure.LocalDB;
+namespace SnsSample.Infrastructure.Sqlite;
 
 [ScopedService]
 public class AccountProfileQueryService : IAccountProfileQueryService
