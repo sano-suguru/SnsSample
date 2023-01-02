@@ -17,14 +17,14 @@ public class Profile : EntityBase<ProfileId, long>
     public Profile(
         AccountId accountId
         , Nickname nickname
-        , Biography introduction
+        , Biography biography
         , Location location
         , WebSite webSite
         , Birthday birthday)
     {
         this.AccountId = accountId;
         this.Nickname = nickname;
-        this.Introduction = introduction;
+        this.Introduction = biography;
         this.Location = location;
         this.WebSite = webSite;
         this.Birthday = birthday;
