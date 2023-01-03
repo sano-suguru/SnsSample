@@ -3,8 +3,8 @@
 namespace SnsSample.Domain.Interfaces;
 
 public interface IRepository<TEntity, TKey, TKeyValue>
-    where TEntity : EntityBase<TKey, TKeyValue>
-        where TKey : ValueObject<TKeyValue>
+    where TEntity : notnull, EntityBase<TKey, TKeyValue>
+        where TKey : notnull, ValueObject<TKeyValue>
             where TKeyValue : notnull
 {
     ValueTask<TEntity?> SelectByIdAsnyc(TKey id);
