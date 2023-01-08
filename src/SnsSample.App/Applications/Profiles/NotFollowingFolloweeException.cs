@@ -1,24 +1,23 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SnsSample.App.Applications.Profiles
+namespace SnsSample.App.Applications.Profiles;
+
+[Serializable]
+internal class NotFollowingFolloweeException : Exception
 {
-    [Serializable]
-    internal class NotFollowingFolloweeException : Exception
+    public NotFollowingFolloweeException()
     {
-        public NotFollowingFolloweeException()
-        {
-        }
+    }
 
-        public NotFollowingFolloweeException(string? message) : base(message)
-        {
-        }
+    public NotFollowingFolloweeException(string? message) : base(message)
+    {
+    }
 
-        public NotFollowingFolloweeException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
+    public NotFollowingFolloweeException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
 
-        protected NotFollowingFolloweeException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+    protected NotFollowingFolloweeException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
     }
 }

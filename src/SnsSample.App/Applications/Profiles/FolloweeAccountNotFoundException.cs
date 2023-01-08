@@ -1,24 +1,23 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SnsSample.App.Applications.Profiles
+namespace SnsSample.App.Applications.Profiles;
+
+[Serializable]
+internal class FolloweeAccountNotFoundException : Exception
 {
-    [Serializable]
-    internal class FolloweeAccountNotFoundException : Exception
+    public FolloweeAccountNotFoundException()
     {
-        public FolloweeAccountNotFoundException()
-        {
-        }
+    }
 
-        public FolloweeAccountNotFoundException(string? message) : base(message)
-        {
-        }
+    public FolloweeAccountNotFoundException(string? message) : base(message)
+    {
+    }
 
-        public FolloweeAccountNotFoundException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
+    public FolloweeAccountNotFoundException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
 
-        protected FolloweeAccountNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+    protected FolloweeAccountNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
     }
 }

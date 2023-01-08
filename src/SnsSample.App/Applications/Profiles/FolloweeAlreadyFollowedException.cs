@@ -1,24 +1,23 @@
 ﻿using System.Runtime.Serialization;
 
-namespace SnsSample.App.Applications.Profiles
+namespace SnsSample.App.Applications.Profiles;
+
+[Serializable]
+internal class FolloweeAlreadyFollowedException : Exception
 {
-    [Serializable]
-    internal class FolloweeAlreadyFollowedException : Exception
+    public FolloweeAlreadyFollowedException()
     {
-        public FolloweeAlreadyFollowedException()
-        {
-        }
+    }
 
-        public FolloweeAlreadyFollowedException(string? message) : base(message)
-        {
-        }
+    public FolloweeAlreadyFollowedException(string? message) : base(message)
+    {
+    }
 
-        public FolloweeAlreadyFollowedException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
+    public FolloweeAlreadyFollowedException(string? message, Exception? innerException) : base(message, innerException)
+    {
+    }
 
-        protected FolloweeAlreadyFollowedException(SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
+    protected FolloweeAlreadyFollowedException(SerializationInfo info, StreamingContext context) : base(info, context)
+    {
     }
 }
